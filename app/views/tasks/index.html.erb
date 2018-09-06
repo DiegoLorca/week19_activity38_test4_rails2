@@ -1,2 +1,22 @@
-<h1>Tasks#index</h1>
-<p>Find me in app/views/tasks/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <% @tasks.each_slice(3) do |row| %>
+    <% row.each do |task| %>
+    <div class="col">
+      <div class="card">
+          <%= image_tag task.image, size: '200x200', class: 'card-img-top' %>
+          <div class="body">
+            <h4><%= task.title %></h4>
+            <p> Last updated <%= time_ago_in_words task.created_at %> </p>
+            
+          </div>
+
+    </div>
+  </div>
+  <% end %>
+    <div class="w-100" style="margin-top: 20px">
+
+    </div>
+    <% end %>
+  </div>
+</div>
