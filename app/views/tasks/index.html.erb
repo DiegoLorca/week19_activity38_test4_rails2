@@ -4,11 +4,15 @@
     <% row.each do |task| %>
     <div class="col">
       <div class="card">
-          <%= image_tag task.image, size: '200x200', class: 'card-img-top' %>
+          <a href="<%= task_path(task) %>"> <%= image_tag task.image, size: '200x200', class: 'card-img-top' %> </a>
           <div class="body">
             <h4><%= task.title %></h4>
             <p> Last updated <%= time_ago_in_words task.created_at %> </p>
+            <% if task.done == false %>
+              <button type="button" class="btn btn-danger">No listo</button>
+            <% else %>
               <button type="button" class="btn btn-primary">Listo</button>
+            <% end %>
           </div>
 
     </div>
