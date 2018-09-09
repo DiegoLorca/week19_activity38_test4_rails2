@@ -5,6 +5,7 @@ class TasksController < ApplicationController
   end
 
   def done
+    # debugger
     @confirm = helpers.donetask(Task.find(params[:id]))
     if @confirm.nil?
       @event = Event.new
@@ -16,10 +17,10 @@ class TasksController < ApplicationController
       @confirm.completed = !@confirm.completed
       @confirm.save
     end
-      redirect_to tasks_path, notice: 'Tarea completa'
+      redirect_to tasks_path, notice: 'Se ha registrado un cambio'
   end
 
   def show
-    @tasks = Task.find(params[:id])
+    @task = Task.find(params[:id])
   end
 end
