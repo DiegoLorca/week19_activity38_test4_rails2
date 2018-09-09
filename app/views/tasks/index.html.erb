@@ -8,10 +8,10 @@
           <div class="body">
             <h4><%= task.title %></h4>
             <p> Last updated <%= time_ago_in_words task.created_at %> </p>
-            <% if task.done == false %>
-              <button type="button" class="btn btn-danger">No listo</button>
+            <% if donetask(task).nil? || donetask(task).completed == false %>
+              <%= link_to 'No listo', done_task_path(task), class: 'btn btn-danger', method: :post %>
             <% else %>
-              <button type="button" class="btn btn-primary">Listo</button>
+            <%= link_to 'Listo', done_task_path(task), class: 'btn btn-primary', method: :post %>
             <% end %>
           </div>
 
