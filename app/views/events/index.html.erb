@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row">
-    <h1>Registro de tareas completas</h1>
     <table class="table">
+      <h1>Registro de tareas completas</h1>
       <thead class="thead-dark">
         <tr>
-          <th scope="col">Tarea</th>
-          <th scope="col">Foto</th>
+          <th class="text-center" scope="col">Tarea</th>
+          <th class="text-center" scope="col">Foto</th>
         </tr>
       </thead>
       <tbody>
         <% @events.each do |event| %>
           <tr>
             <% if event.completed == true %>
-              <td> <%= event.task.title %> </td>
-              <td> <%= image_tag event.task.image, size: "300x200" %> </td>
+              <td class="text-center"> <%= event.task.title %> </td>
+              <td class="text-center"> <%= image_tag event.task.image, size: "300x200" %> </td>
             <% end %>
           </tr>
         <% end %>

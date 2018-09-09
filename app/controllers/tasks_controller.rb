@@ -17,10 +17,11 @@ class TasksController < ApplicationController
       @confirm.completed = !@confirm.completed
       @confirm.save
     end
-      redirect_to tasks_path, notice: 'Se ha registrado un cambio'
+      redirect_to tasks_path, notice: 'Se ha registrado un cambio!'
   end
 
   def show
-    @task = Task.find(params[:id])
+    @events = Event.where(completed: true, task_id: params[:id])
   end
+
 end

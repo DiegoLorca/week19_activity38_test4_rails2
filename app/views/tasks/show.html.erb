@@ -1,4 +1,45 @@
-<p>
-  <strong>Imagen</strong>
-  <%= @tasks.photo %>
-</p>
+<div class="container">
+  <div class="row">
+    <table class="table">
+      <h1 class="text-center">Ranking de los primeros cinco usuarios en completar la tarea</h1>
+        <thead class="thead-light">
+          <tr>
+            <th class="text-center" scope="col">#</th>
+            <th class="text-center" scope="col">Nombre</th>
+            <th class="text-center" scope="col">Foto</th>
+          </tr>
+        </thead>
+      <tbody>
+
+        <% @events.first(5).each_with_index do |event, u|  %>
+          <tr class="text-center">
+            <th> <%= u + 1 %></th>
+            <th> <%= event.user.name %></th>
+            <th> <%= image_tag event.user.photo, size: "100x80" %></th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <table class="table">
+      <h1>Resto de usuarios que han completado esta tarea</h1>
+      <thead class="thead-dark">
+        <tr>
+          <th class="text-center" scope="col">#</th>
+          <th class="text-center" scope="col">Nombre</th>
+          <th class="text-center" scope="col">Foto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @events.each_with_index do |event, u| %>
+          <tr class="text-center">
+            <%if u >= 5 && donetask(Task.find(params[:id])) %>
+              <th> <%= u + 1 %> </th>
+              <th> <%= event.user.name %> </th>
+              <th> <%= image_tag event.user.photo, size: "100x80" %> </th>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
